@@ -65,14 +65,14 @@ input:focus {
 	top:0px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 	padding: 20px;
 	color: #FFF;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 #input {
-	margin: 100px 0px;
+	margin: 20px 0px;
 }
 
 #footer {

@@ -25,7 +25,7 @@
 			$ret = array();
 			$i = 0;
 			while( $row = $res->fetch_array() ) {
-				$ret[$i] = array( "Good" => $row['Good'] * $countedValues[$row['Word']], "Bad" => $row['Bad'] * $countedValues[$row['Word']] );
+				$ret[$i] = array( "Good" => $row['Good'] * $countedValues[$row['Word']], "Bad" => $row['Bad'] * $countedValues[$row['Word']], "Word" => $row['Word'] );
 				$i++;
 			}
 			return $ret;

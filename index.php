@@ -14,21 +14,23 @@
 <body>
 	<div id="intro" class="colorA">
 		<h1>Karmeter</h1>
-		<i>Check the moral alignment of a reddit poster based on their post content.</i>
+		<i>Check the moral alignment of a Reddit user based on their comments.</i>
 	</div>
 	<div id="input">
 		<form>
-			<input type="text" name="username" class="big clearableText" value="Reddit Username" /><input type="submit" name="submit" value="Judge" class="big" />
+			<input type="text" name="username" class="big clearableText" value="Reddit Username" /><input type="submit" value="Judge" class="big" />
 		</form>
 		
 		<?php
-			$connection = new mysqli( "localhost", "root", "", "karmeter" ); // Connect to SQL
-			if( $connection->connect_errno ) { // If we couldn't connect, throw an error
-				echo( "Failed to connect to MySQL: (" . $connection->connect_errno . ") " . $connection->connect_error );
-			} else {
-				initMySQL( $connection );
-				echo( getUserScore( $connection, "pooscifer" ) );
-				$connection->close();
+			if( isset( $_GET["username"] ) ) {
+				$connection = new mysqli( "localhost", "root", "", "karmeter" ); // Connect to SQL
+				if( $connection->connect_errno ) { // If we couldn't connect, throw an error
+					echo( "Failed to connect to MySQL: (" . $connection->connect_errno . ") " . $connection->connect_error );
+				} else {
+					initMySQL( $connection );
+					echo( $_GET["username"] . " has a score of " . getUserScore( $connection, $_GET["username"] ) );
+					$connection->close();
+				}
 			}
 		?>
 		

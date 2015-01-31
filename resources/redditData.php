@@ -1,11 +1,11 @@
 <?php
 	function getUserComments( $username ) {
-		$JSON = json_decode( file_get_contents( "https://www.reddit.com/user/" . $username . ".json" ) ); // Get the Reddit JSON
+		$JSON = json_decode( file_get_contents( "https://www.reddit.com/user/" . $username . "/comments.json?limit=1000" ) ); // Get the Reddit JSON
 		
 		if( isset( $JSON->error ) ) {
 			// Todo: Handle error
 		} else {
-			$releventJSON = (array)$JSON->data->children; // Get the actual data from the JSON
+			$releventJSON = $JSON->data->children; // Get the actual data from the JSON
 			$ret = array(); // Initialize return array
 			
 			$c = 0;
@@ -23,7 +23,11 @@
 	}
 	
 	function getRandomComment() {
-		$JSON = json_decode( file_get_contents( "http://www.reddit.com/r/random/comments.json?limit=1" ) );
+		$file = file_get_contents( "http://www.reddit.com/r/random/comments.json?limit=1" );
+		while( !$file ) {
+			$file = file_get_contents( "http://www.reddit.com/r/random/comments.json?limit=1" );
+		}
+		$JSON = json_decode( $file );
 		return $JSON->data->children[0]->data->body;
 	}
 ?>
