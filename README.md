@@ -1,2 +1,2 @@
 # karmeter
-Judging your alignment via reddit posts
+A meter that measures how good of a person you are via your reddit posting history.
