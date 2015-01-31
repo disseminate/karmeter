@@ -32,7 +32,10 @@ h1 {
 	padding: 0px;
 	padding-bottom: 10px;
 }
-
+blockquote {
+	background-color: #EEE;
+	padding: 20px;
+}
 
 #intro {
 	margin-bottom: 50px;
@@ -48,5 +51,10 @@ h1 {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 20px;
+}
+
+#training {
+	text-align: left;
 	padding: 20px;
 }

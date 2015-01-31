@@ -21,4 +21,9 @@
 		
 		return array();
 	}
+	
+	function getRandomComment() {
+		$JSON = json_decode( file_get_contents( "http://www.reddit.com/r/random/comments.json?limit=1" ) );
+		return $JSON->data->children[0]->data->body;
+	}
 ?>

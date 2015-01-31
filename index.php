@@ -11,7 +11,7 @@
 <body>
 	<div id="intro" class="colorA">
 		<h1>Karmeter</h1>
-		<i>Check the alignment of a reddit poster based on what they've posted.</i>
+		<i>Check the moral alignment of a reddit poster based on what they've posted.</i>
 	</div>
 	<div id="input">
 		<form>
@@ -25,7 +25,7 @@
 				echo( "Failed to connect to MySQL: (" . $connection->connect_errno . ") " . $connection->connect_error );
 			} else {
 				initMySQL( $connection );
-				echo( getUserScore( $connection, "CandyMan77" ) );
+				echo( getUserScore( $connection, "pooscifer" ) );
 				$connection->close();
 			}
 		?>

@@ -1,6 +1,6 @@
 <?php
 	function initMySQL( $connection ) { // Create the Words table in the SQL DB if it doesn't exist yet
-		$ret = $connection->query( "CREATE TABLE IF NOT EXISTS Words( id INT NOT NULL auto_increment, Word VARCHAR(100), Good INT, Bad INT, PRIMARY KEY ( id ) )" );
+		$ret = $connection->query( "CREATE TABLE IF NOT EXISTS Words( Word VARCHAR(100), Good INT, Bad INT, PRIMARY KEY ( Word ) )" );
 		if( !$ret ) {
 			echo( "Failed to create MySQL table: " . $connection->error );
 		}
@@ -35,23 +35,68 @@
 		return array( "Good" => 0, "Bad" => 0 ); // Return nothing
 	}
 	
-	function incrementGood( $connection, $word ) {
-		$res = $connection->query( "SELECT Good, Bad FROM Words WHERE Word=" . $connection->real_escape_string( $word ) . ";" );
-		
-		if( !$res ) { // Unlike above, we insert with a starting "Good" score
-			$connection->query( "INSERT INTO Words ( Word, Good, Bad ) VALUES ( " . $connection->real_escape_string( $word ) . ", 1, 0 )" );
-		} else { // If it already exists, just increment it
-			$connection->query( "UPDATE Words SET Good = Good + 1 WHERE Word=" . $connection->real_escape_string( $word ) . ";" );
+	function incrementGoodComment( $comment ) {
+		$redundantArray = explode( " ", $comment );
+		$arr = array_keys( array_flip( $redundantArray ) );
+		$countedValues = array_count_values( $redundantArray );
+		for( $i = 0; $i < count( $arr ); $i++ ) {
+			for( $n = 0; $n < $countedValues[$arr[$i]]; $n++ ) {
+				incrementGood( $arr[$i] );
+			}
 		}
 	}
 	
-	function incrementBad( $connection, $word ) {
-		$res = $connection->query( "SELECT Good, Bad FROM Words WHERE Word=" . $connection->real_escape_string( $word ) . ";" );
+	function incrementBadComment( $comment ) {
+		$redundantArray = explode( " ", $comment );
+		$arr = array_keys( array_flip( $redundantArray ) );
+		$countedValues = array_count_values( $redundantArray );
 		
-		if( !$res ) {
-			$connection->query( "INSERT INTO Words ( Word, Good, Bad ) VALUES ( " . $connection->real_escape_string( $word ) . ", 0, 1 )" );
-		} else {
-			$connection->query( "UPDATE Words SET Bad = Bad + 1 WHERE Word=" . $connection->real_escape_string( $word ) . ";" );
+		for( $i = 0; $i < count( $arr ); $i++ ) {
+			for( $n = 0; $n < $countedValues[$arr[$i]]; $n++ ) {
+				incrementBad( $arr[$i] );
+			}
 		}
+	}
+	
+	function incrementGood( $word ) {
+		if( empty( $word ) ) {
+			return;
+		}
+		if( strlen( $word ) <= 3 ) {
+			return;
+		}
+		
+		$connection = new mysqli( "localhost", "root", "", "karmeter" ); // Connect to SQL
+		if( $connection->connect_errno ) { // If we couldn't connect, throw an error
+			echo( "Failed to connect to MySQL: (" . $connection->connect_errno . ") " . $connection->connect_error );
+		} else {
+			initMySQL( $connection );
+			$res = $connection->query( "INSERT INTO Words ( Word, Good, Bad ) VALUES ( '" . $connection->real_escape_string( $word ) . "', 1, 0 ) ON DUPLICATE KEY UPDATE Good = Good + 1" );
+			if( !$res ) {
+				echo( "Failed to increment 'good' word: " . $connection->error . "<br />" );
+			}
+		}
+		$connection->close();
+	}
+	
+	function incrementBad( $word ) {
+		if( empty( $word ) ) {
+			return;
+		}
+		if( strlen( $word ) <= 3 ) {
+			return;
+		}
+		
+		$connection = new mysqli( "localhost", "root", "", "karmeter" ); // Connect to SQL
+		if( $connection->connect_errno ) { // If we couldn't connect, throw an error
+			echo( "Failed to connect to MySQL: (" . $connection->connect_errno . ") " . $connection->connect_error );
+		} else {
+			initMySQL( $connection );
+			$res = $connection->query( "INSERT INTO Words ( Word, Good, Bad ) VALUES ( '" . $connection->real_escape_string( $word ) . "', 0, 1 ) ON DUPLICATE KEY UPDATE Bad = Bad + 1" );
+			if( !$res ) {
+				echo( "Failed to increment 'bad' word: " . $connection->error . "<br />" );
+			}
+		}
+		$connection->close();
 	}
 ?>
