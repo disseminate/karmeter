@@ -75,6 +75,52 @@ input:focus {
 	margin: 20px 0px;
 }
 
+#bar {
+	margin-top: 20px;
+	
+	display: inline-block;
+	position: absolute;
+	
+	right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+	
+	width: 40%;
+	height: 40px;
+	min-width: 300px;
+	
+	background-color: #FF842F;
+}
+
+#slider {
+	margin-top: 20px;
+	
+	display: inline-block;
+	position: absolute;
+	
+	right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+	
+	width: 3px;
+	height: 40px;
+	
+	background-color: #FFF;
+}
+
+#analysis {
+	margin-top: 120px;
+	font-size: 1.5em;
+}
+
+#analysisSub {
+	margin-top: 20px;
+	font-size: 1.0em;
+	color: #555;
+}
+
 #footer {
 	display: block;
 	position: fixed;
