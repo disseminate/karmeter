@@ -36,6 +36,28 @@ blockquote {
 	background-color: #EEE;
 	padding: 20px;
 }
+input {
+	background-color: #FFF;
+	border-style: solid;
+	border-color: #CCC;
+	border-width: 1px;
+	padding: 10px;
+	margin: 5px;
+	font-family: Ubuntu, Verdana, sans-serif;
+}
+input.big {
+	padding: 20px;
+	margin: 10px;
+	font-size: 1.5em;
+}
+input.clearableText {
+	color: #BBB;
+}
+input:focus {
+	outline: none !important;
+	border: 1px solid #FF842F;
+	box-shadow: 0 0 10px #FF842F;
+}
 
 #intro {
 	display: block;

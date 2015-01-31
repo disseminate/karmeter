@@ -8,6 +8,8 @@
 <head>
 	<title>Karmeter</title>
 	<link rel="stylesheet" href="css/style.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="js/smartinput.js"></script>
 </head>
 <body>
 	<div id="intro" class="colorA">
@@ -16,8 +18,7 @@
 	</div>
 	<div id="input">
 		<form>
-			Reddit username<br>
-			<input type="text" name="username" /><input type="submit" name="submit">
+			<input type="text" name="username" class="big clearableText" value="Reddit Username" /><input type="submit" name="submit" value="Judge" class="big" />
 		</form>
 		
 		<?php
