@@ -1,6 +1,12 @@
 <?php
 	function getUserComments( $username ) {
-		$JSON = json_decode( file_get_contents( "https://www.reddit.com/user/" . $username . "/comments.json?limit=1000" ) ); // Get the Reddit JSON
+		$url = "https://www.reddit.com/user/" . $username . "/comments.json?limit=1000";
+		$header = @get_headers( $url );
+		if($header[0] == 'HTTP/1.1 404 Not Found') {
+			return -1;
+		}
+		
+		$JSON = json_decode( file_get_contents( $url ) ); // Get the Reddit JSON
 		
 		if( isset( $JSON->error ) ) {
 			// Todo: Handle error
@@ -19,7 +25,7 @@
 			return $ret;
 		}
 		
-		return array();
+		return -1;
 	}
 	
 	function getRandomComment() {

@@ -4,6 +4,10 @@
 	function getUserScore( $connection, $username ) {
 		$comments = getUserComments( $username ); // Get a user's comments
 		
+		if( $comments == -1 ) {
+			return -2;
+		}
+		
 		if( count( $comments ) == 0 ) { // No comments? No score
 			return 0;
 		}

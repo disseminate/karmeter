@@ -28,7 +28,14 @@
 					echo( "Failed to connect to MySQL: (" . $connection->connect_errno . ") " . $connection->connect_error );
 				} else {
 					initMySQL( $connection );
-					echo( $_GET["username"] . " has a score of " . getUserScore( $connection, $_GET["username"] ) );
+					$score = getUserScore( $connection, $_GET["username"] );
+					
+					if( $score == -2 ) {
+						echo( $_GET["username"] . " does not exist!" );
+					} else {
+						echo( $_GET["username"] . " has a score of " . $score );
+					}
+					
 					$connection->close();
 				}
 			}
