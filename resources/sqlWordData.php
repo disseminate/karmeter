@@ -7,14 +7,25 @@
 	}
 	
 	function getWordScores( $connection, $comment ) { // Get the score of a certain comment (returns an array of array( Good, Bad ))
-		$wordQuery = "'" . str_replace( " ", "','", $connection->escape_string( $comment ) ) . "'";
-		$res = $connection->query( "SELECT Good, Bad FROM Words WHERE Word IN (" . $wordQuery . " );" ); // Get the scores from the database
+		$sanitizedComment = $connection->escape_string( $comment );
+		$redundantArray = explode( " ", $sanitizedComment );
+		$arr = array_keys( array_flip( $redundantArray ) );
+		$wordQuery = "'";
+		for( $i = 0; $i < count( $arr ); $i++ ) {
+			$wordQuery = $wordQuery . $arr[$i] . "'";
+			if( $i < count( $arr ) - 1 ) {
+				$wordQuery = $wordQuery . ",'";
+			}
+		}
+		$countedValues = array_count_values( $redundantArray );
+		
+		$res = $connection->query( "SELECT Word, Good, Bad FROM Words WHERE Word IN (" . $wordQuery . " );" ); // Get the scores from the database
 		
 		if( $res ) { // There are words in the database
 			$ret = array();
 			$i = 0;
 			while( $row = $res->fetch_array() ) {
-				$ret[$i] = array( "Good" => $row['Good'], "Bad" => $row['Bad'] );
+				$ret[$i] = array( "Good" => $row['Good'] * $countedValues[$row['Word']], "Bad" => $row['Bad'] * $countedValues[$row['Word']] );
 				$i++;
 			}
 			return $ret;
