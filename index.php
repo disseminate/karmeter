@@ -1,3 +1,7 @@
+<?php
+	require( "resources/redditData.php" );
+?>
+
 <html>
 <head>
 	<title>Karmeter</title>
