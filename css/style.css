@@ -41,6 +41,7 @@ blockquote {
 	margin-bottom: 50px;
 	padding: 20px;
 	color: #FFF;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 #input {
@@ -49,8 +50,10 @@ blockquote {
 
 #footer {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	position: fixed;
+	left:0px;
+	bottom:0px;
+	width: 100%;
 	padding: 20px;
 }
 
