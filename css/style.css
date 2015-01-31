@@ -38,6 +38,11 @@ blockquote {
 }
 
 #intro {
+	display: block;
+	left:0px;
+	top:0px;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 50px;
 	padding: 20px;
 	color: #FFF;

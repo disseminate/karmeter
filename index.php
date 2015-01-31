@@ -11,7 +11,7 @@
 <body>
 	<div id="intro" class="colorA">
 		<h1>Karmeter</h1>
-		<i>Check the moral alignment of a reddit poster based on what they've posted.</i>
+		<i>Check the moral alignment of a reddit poster based on their post content.</i>
 	</div>
 	<div id="input">
 		<form>
