@@ -43,10 +43,10 @@
 		$badProb = $sumBadProb / $n;
 		
 		if( $goodProb == 0 && $badProb == 0 ) { // If there's no data (completely unique comment not in database)
-			return 0.5;
+			return bayesProbabilityBad;
 		}
 		
-		$probMessageBad = $badProb * 0.5 / ( $badProb * 0.5 + $goodProb * 0.5 ); // Bayes' Theorem
+		$probMessageBad = $badProb * bayesProbabilityBad / ( $badProb * bayesProbabilityBad + $goodProb * ( 1 - bayesProbabilityBad ) ); // Bayes' Theorem
 		
 		return $probMessageBad; // Return the probability
 	}

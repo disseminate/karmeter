@@ -1,4 +1,5 @@
 <?php
+	require( "resources/config.php" );
 	require( "resources/redditData.php" );
 	require( "resources/redditAnalysis.php" );
 ?>
