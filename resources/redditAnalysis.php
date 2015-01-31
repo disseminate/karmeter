@@ -21,19 +21,24 @@
 	}
 	
 	function badCommentProbability( $connection, $comment ) {
-		$sanitizedComment = explode( ' ', preg_replace( '/[^a-z]+/i', ' ', strtolower( $comment ) ) ); // Remove punctuation
+		$sanitizedComment = preg_replace( '/[^a-z]+/i', ' ', strtolower( $comment ) ); // Remove punctuation
+		$score = getWordScores( $connection, $sanitizedComment ); // Get the scores of every word
 		$n = 0;
 		$sumGoodProb = 0; // We are going to average the individual word scores to get an overall comment score
 		$sumBadProb = 0;
-		while( $n < count( $sanitizedComment ) ) {
-			$score = getWordScore( $connection, $sanitizedComment[$n] );
-			$total =  $score['Good'] + $score['Bad'];
+		while( $n < count( $score ) ) {
+			$total =  $score[$n]['Good'] + $score[$n]['Bad'];
 			if( $total > 0 ) {
-				$sumGoodProb += $score['Good'] / $total; // Increase the good and bad probabilities (to average later). We only use probabilities in Bayesian processes, so no need to retain scores
-				$sumBadProb += $score['Bad'] / $total;
+				$sumGoodProb += $score[$n]['Good'] / $total; // Increase the good and bad probabilities (to average later). We only use probabilities in Bayesian processes, so no need to retain scores
+				$sumBadProb += $score[$n]['Bad'] / $total;
 			}
 			$n++;
 		}
+		
+		if( $n == 0 ) {
+			return 0.5;
+		}
+		
 		$goodProb = $sumGoodProb / $n; // Average them
 		$badProb = $sumBadProb / $n;
 		

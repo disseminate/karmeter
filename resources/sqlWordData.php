@@ -6,17 +6,20 @@
 		}
 	}
 	
-	function getWordScore( $connection, $word ) { // Get the score of a certain word (returns Array( Good, Bad ))
-		$res = $connection->query( "SELECT Good, Bad FROM Words WHERE Word=" . $connection->escape_string( $word ) . ";" ); // Get the scores from the database
+	function getWordScores( $connection, $comment ) { // Get the score of a certain comment (returns an array of array( Good, Bad ))
+		$wordQuery = "'" . str_replace( " ", "','", $connection->escape_string( $comment ) ) . "'";
+		$res = $connection->query( "SELECT Word, Good, Bad FROM Words WHERE Word IN (" . $wordQuery . " );" ); // Get the scores from the database
 		
-		if( !$res ) { // The word isn't in the database yet
-			$ret = $connection->query( "INSERT INTO Words ( Word, Good, Bad ) VALUES ( '" . $connection->real_escape_string( $word ) . "', 0, 0 )" ); // Insert it
-			if( !$ret ) {
-				echo( "Failed to insert word '" . $connection->real_escape_string( $word ) . "': " . $connection->error );
+		if( $res ) { // There are words in the database
+			$ret = array();
+			$i = 0;
+			while( $row = $res->fetch_array() ) {
+				$ret[$i] = array( "Good" => $row['Good'], "Bad" => $row['Bad'] );
+				$i++;
 			}
-		} else { // Word's in the database
-			$data = $res->fetch_assoc(); // Return its information
-			return array( "Good" => $data['Good'], "Bad" => $data['Bad'] );
+			return $ret;
+		} else {
+			echo( "Failed to get word scores: " . $connection->error );
 		}
 		return array( "Good" => 0, "Bad" => 0 ); // Return nothing
 	}
