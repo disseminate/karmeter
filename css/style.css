@@ -30,7 +30,9 @@ h1 {
 	font-size: 5em;
 	margin: 0px;
 	padding: 0px;
+	padding-bottom: 10px;
 }
+
 
 #intro {
 	margin-bottom: 50px;
