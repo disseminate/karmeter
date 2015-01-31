@@ -1,3 +1,4 @@
 <?php
-	$redditSecret = "REDDIT_SECRET_HERE";
+	$redditSecret = "Jxm-lQRQiUX0eAWN8JZXHB3MJFo";
 ?>
+	
