@@ -8,7 +8,7 @@
 	
 	function getWordScores( $connection, $comment ) { // Get the score of a certain comment (returns an array of array( Good, Bad ))
 		$wordQuery = "'" . str_replace( " ", "','", $connection->escape_string( $comment ) ) . "'";
-		$res = $connection->query( "SELECT Word, Good, Bad FROM Words WHERE Word IN (" . $wordQuery . " );" ); // Get the scores from the database
+		$res = $connection->query( "SELECT Good, Bad FROM Words WHERE Word IN (" . $wordQuery . " );" ); // Get the scores from the database
 		
 		if( $res ) { // There are words in the database
 			$ret = array();
