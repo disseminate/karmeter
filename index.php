@@ -20,9 +20,7 @@
 		</form>
 		
 		<?php
-			echo( "<pre>" );
-			print_r( getUserComments( "CandyMan77" ) );
-			echo( "</pre>" );
+			echo( getUserScore( "CandyMan77" ) );
 		?>
 		
 	</div>
