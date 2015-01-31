@@ -17,6 +17,13 @@
 			Reddit username<br>
 			<input type="text" name="username" /><input type="submit" name="submit">
 		</form>
+		
+		<?php
+			echo( "<pre>" );
+			print_r( getUserComments( "CandyMan77" ) );
+			echo( "</pre>" );
+		?>
+		
 	</div>
 	<div id="footer" class="colorGray">
 		Created with care by <a href="http://luaforfood.com" target="_blank">Kyle Windsor</a> and <a href="https://github.com/james2allen" target="_blank">James Allen</a>.
