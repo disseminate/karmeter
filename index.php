@@ -11,7 +11,7 @@
 	<div id="input">
 		<form>
 			Reddit username<br>
-			<input type="text" name="username" />
+			<input type="text" name="username" /><input type="submit" name="submit">
 		</form>
 	</div>
 	<div id="footer" class="colorGray">

@@ -28,12 +28,14 @@ body {
 
 h1 {
 	font-size: 5em;
-	margin: 0px 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 #intro {
 	margin-bottom: 50px;
 	padding: 20px;
+	color: #FFF;
 }
 
 #input {
