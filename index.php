@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Karmeter</title>
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 	<div id="intro">
