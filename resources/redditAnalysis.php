@@ -1,7 +1,7 @@
 <?php
 	require( "sqlWordData.php" );
 	
-	function getUserScore( $username ) {
+	function getUserScore( $connection, $username ) {
 		$comments = getUserComments( $username ); // Get a user's comments
 		
 		if( count( $comments ) == 0 ) { // No comments? No score
@@ -11,7 +11,7 @@
 		$n = 0;
 		$total = 0;
 		while( $n < count( $comments ) ) { // Get the bad probability of all comments & average them
-			$total += badCommentProbability( $comments[$n] );
+			$total += badCommentProbability( $connection, $comments[$n] );
 			$n++;
 		}
 		
@@ -20,13 +20,13 @@
 		return $normalizedTotal;
 	}
 	
-	function badCommentProbability( $comment ) {
+	function badCommentProbability( $connection, $comment ) {
 		$sanitizedComment = explode( ' ', preg_replace( '/[^a-z]+/i', ' ', strtolower( $comment ) ) ); // Remove punctuation
 		$n = 0;
 		$sumGoodProb = 0; // We are going to average the individual word scores to get an overall comment score
 		$sumBadProb = 0;
 		while( $n < count( $sanitizedComment ) ) {
-			$score = getWordScore( $sanitizedComment[$n] );
+			$score = getWordScore( $connection, $sanitizedComment[$n] );
 			$total =  $score['Good'] + $score['Bad'];
 			if( $total > 0 ) {
 				$sumGoodProb += $score['Good'] / $total; // Increase the good and bad probabilities (to average later). We only use probabilities in Bayesian processes, so no need to retain scores
