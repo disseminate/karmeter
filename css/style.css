@@ -1,6 +1,29 @@
+@import url( "http://fonts.googleapis.com/css?family=Ubuntu:400,400italic" );
+
 body {
-	font-family: Verdana, sans-serif;
+	font-family: Ubuntu, Verdana, sans-serif;
 	text-align: center;
+	padding: 0px;
+	margin: 0px;
+}
+
+.colorA {
+	background-color: #FF842F;
+}
+.colorB {
+	background-color: #E8672B;
+}
+.colorC {
+	background-color: #FF683C;
+}
+.colorD {
+	background-color: #E8442B;
+}
+.colorE {
+	background-color: #FF443C;
+}
+.colorGray {
+	background-color: #EEE;
 }
 
 h1 {
@@ -9,13 +32,17 @@ h1 {
 }
 
 #intro {
-	
+	margin-bottom: 50px;
+	padding: 20px;
 }
 
 #input {
-	
+	margin: 100px 0px;
 }
 
 #footer {
-	
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
 }
