@@ -1,4 +1,5 @@
 <?php
-	$redditSecret = "Jxm-lQRQiUX0eAWN8JZXHB3MJFo";
+	const redditID = "reddit-id-here";
+	const redditSecret = "reddit-secret-here";
 ?>
 	
