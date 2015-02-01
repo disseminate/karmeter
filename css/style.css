@@ -59,6 +59,9 @@ input:focus {
 	border: 1px solid #FF842F;
 	box-shadow: 0 0 10px #FF842F;
 }
+a {
+	color: #FF842F;
+}
 
 #intro {
 	display: block;
@@ -87,7 +90,7 @@ input:focus {
     margin-right: auto;
     margin-left: auto;
 	
-	width: 500px;
+	width: 800px;
 	height: 40px;
 	
 	background-color: #FF842F;

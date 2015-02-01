@@ -1,6 +1,6 @@
 <?php
 	function getUserComments( $username ) {
-		$url = "https://www.reddit.com/user/" . $username . "/comments.json?limit=1000";
+		$url = "https://www.reddit.com/user/" . $username . "/comments.json?limit=" . REDDIT_NUM_RECORDS;
 		$header = @get_headers( $url );
 		if($header[0] == 'HTTP/1.1 404 Not Found') {
 			return -1;
