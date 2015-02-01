@@ -35,7 +35,7 @@
 				$score = getUserScore( $connection, $_GET["username"] );
 				
 				$fakeScore = ( $score + 1 ) / 2;
-				echo( '<div id="slider" style="width:' . ( $fakeScore * 90 ) . '%"> </div></div>' );
+				echo( '<div id="sliderContainer"><div id="slider" style="width:calc(' . ( $fakeScore * 100 ) . '%)"> </div></div></div>' );
 				
 				echo( '<div id="analysis">' );
 				if( $score == -2 ) {

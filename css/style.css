@@ -111,14 +111,14 @@ a:hover, a:focus
 	background-color:#FF842F;
 }
 
-#slider {
+#sliderContainer {
 	margin: 10px;
-	display: block;
-	
 	height: 40px;
-	
+}
+
+#slider {
+	height: 40px;
 	border-radius: 20px;
-	
 	background-color: #FFF;
 }
 
