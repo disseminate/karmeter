@@ -18,6 +18,8 @@
 		$comment = "";
 		if( isset( $_GET['comment'] ) ) {
 			$comment = $_GET['comment'];
+		} elseif( isset( $_GET['r'] ) ) {
+			$comment = getSubredditPost( $_GET['r'] );
 		} else {
 			$comment = getRandomComment();
 		}

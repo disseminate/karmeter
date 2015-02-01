@@ -29,14 +29,19 @@
 	}
 	
 	function getRandomComment() {
-		$file = file_get_contents( "http://www.reddit.com/r/random/comments.json?limit=1" );
+		return getSubredditPost( "random" );
+	}
+	
+	function getSubredditPost( $r ) {
+		$file = file_get_contents( "http://www.reddit.com/r/" . $r . "/comments.json?limit=100" );
 		while( !$file ) {
-			$file = file_get_contents( "http://www.reddit.com/r/random/comments.json?limit=1" );
+			$file = file_get_contents( "http://www.reddit.com/r/" . $r . "/comments.json?limit=100" );
 		}
 		$JSON = json_decode( $file );
-		if( count( $JSON->data->children ) == 0 ) {
+		$children = $JSON->data->children;
+		if( count( $children ) == 0 ) {
 			return "";
 		}
-		return $JSON->data->children[0]->data->body;
+		return $children[array_rand( $children )]->data->body;
 	}
 ?>
