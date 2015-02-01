@@ -15,7 +15,8 @@
 		$n = 0;
 		$total = 0;
 		while( $n < count( $comments ) ) { // Get the bad probability of all comments & average them
-			$total += badCommentProbability( $connection, $comments[$n] );
+			$score = badCommentProbability( $connection, $comments[$n] );
+			$total += $score;
 			$n++;
 		}
 		

@@ -46,7 +46,7 @@
 						$type = "negative";
 					}
 					echo( "<b><a href='http://reddit.com/u/" . $_GET["username"] . "' target='_blank'>" . $_GET["username"] . "</a></b> has a score of <b>" . round( ( $score + 1 ) * 5, 2 ) . "/10</b>.</div>" );
-					echo( "<div id='analysisSub'>This is based on the words used in the comment history of the user.<br />This user makes mostly " . $type . " comments.</div>" );
+					echo( "<div id='analysisSub'>This is based on the words used in the comment history of the user.<br />This user makes mostly " . $type . " comments." );
 				}
 				
 				$connection->close();
