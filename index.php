@@ -51,7 +51,7 @@
 		}
 	?>
 	<div id="footer" class="colorGray">
-		Created at UofTHacks 2015 with care by <a href="http://luaforfood.com" target="_blank">Kyle Windsor</a> and <a href="https://github.com/james2allen" target="_blank">James Allen</a>.
+		Created at UofTHacks 2015 with &#9825; by <a href="http://luaforfood.com" target="_blank">Kyle Windsor</a> and <a href="https://github.com/james2allen" target="_blank">James Allen</a>.
 	</div>
 </body>
 </html>
