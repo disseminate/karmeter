@@ -61,7 +61,6 @@ input:focus {
 }
 a {
 	color: #FF842F;
-	text-decoration: none;
 	-webkit-transition: 100ms linear 0s;
 	-moz-transition: 100ms linear 0s;
 	-o-transition: 100ms linear 0s;
