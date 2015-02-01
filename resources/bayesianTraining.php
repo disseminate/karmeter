@@ -15,7 +15,12 @@
 			incrementComment( $_POST['text'], intval( $_POST['score'] ) );
 		}
 		
-		$comment = getRandomComment();
+		$comment = "";
+		if( isset( $_GET['comment'] ) ) {
+			$comment = $_GET['comment'];
+		} else {
+			$comment = getRandomComment();
+		}
 		$cleanComment = preg_replace( '/[^a-z]+/i', ' ', strtolower( $comment ) );
 		echo( '<form method="post" action="bayesianTraining.php">' );
 			echo( "<blockquote>" );
