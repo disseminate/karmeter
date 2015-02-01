@@ -24,7 +24,7 @@
 			<input type="text" name="username" class="big clearableText" value="Reddit Username" /><input type="submit" value="Judge" class="big" />
 		</form>
 	</div>
-	<div id="bar"> </div>
+	<div id="bar">
 	<?php
 		if( isset( $_GET["username"] ) ) {
 			$connection = new mysqli( MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB ); // Connect to SQL
@@ -34,24 +34,24 @@
 				initMySQL( $connection );
 				$score = getUserScore( $connection, $_GET["username"] );
 				
-				echo( '<div id="slider" style="transform: translateX(' );
-				echo( ( $score * 400 ) );
-				echo( 'px)"> </div>' );
+				$fakeScore = ( $score + 1 ) / 2;
+				echo( '<div id="slider" style="width:' . ( $fakeScore * 90 ) . '%"> </div></div>' );
 				
 				echo( '<div id="analysis">' );
 				if( $score == -2 ) {
 					echo( "<b>" . $_GET["username"] . "</b> does not exist!</div>" );
 				} else {
-					echo( "<b><a href='http://reddit.com/u/" . $_GET["username"] . "' target='_blank'>" . $_GET["username"] . "</a></b> has a score of <b>" . round( $score * 5, 3 ) . "</b>.</div>" );
-					echo( "<div id='analysisSub'>A score of -5 is the worst and a score of 5 is the best.<br />This is based on the words used in the comment history of the user.</div>" );
+					echo( "<b><a href='http://reddit.com/u/" . $_GET["username"] . "' target='_blank'>" . $_GET["username"] . "</a></b> has a score of <b>" . round( ( $score + 1 ) * 5, 2 ) . "/10</b>.</div>" );
+					echo( "<div id='analysisSub'>This is based on the words used in the comment history of the user.</div>" );
 				}
 				
 				$connection->close();
 			}
 		} else {
-			echo( '<div id="slider"> </div>' );
+			echo( '<div id="slider"> </div></div>' );
 		}
 	?>
+	<div id="footerPad"> </div>
 	<div id="footer" class="colorGray">
 		Created at UofTHacks 2015 with &#9825; by <a href="http://luaforfood.com" target="_blank">Kyle Windsor</a> and <a href="https://github.com/james2allen" target="_blank">James Allen</a>.
 	</div>
