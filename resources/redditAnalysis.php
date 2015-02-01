@@ -20,13 +20,11 @@
 		}
 		
 		$ret = ( 1 - $total / $n ) * 2 - 1;
-		echo( $ret . " - " );
 		if( $ret < 0 ) {
 			$ret = pow( abs( $ret ), SCALE_EXPONENT ) * -1;
 		} else {
 			$ret = abs( pow( $ret, SCALE_EXPONENT ) );
 		}
-		echo( $ret );
 		return $ret;
 	}
 	
