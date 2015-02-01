@@ -11,6 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
 	<script src="js/smartinput.js"></script>
+	<link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
 	<div id="intro" class="colorA">
