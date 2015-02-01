@@ -34,6 +34,9 @@
 			$file = file_get_contents( "http://www.reddit.com/r/random/comments.json?limit=1" );
 		}
 		$JSON = json_decode( $file );
+		if( count( $JSON->data->children ) == 0 ) {
+			return "";
+		}
 		return $JSON->data->children[0]->data->body;
 	}
 ?>

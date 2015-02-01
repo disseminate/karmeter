@@ -23,7 +23,6 @@
 		</form>
 	</div>
 	<div id="bar"> </div>
-	<div id="slider"> </div>
 	<?php
 		if( isset( $_GET["username"] ) ) {
 			$connection = new mysqli( "localhost", "root", "", "karmeter" ); // Connect to SQL
@@ -32,6 +31,10 @@
 			} else {
 				initMySQL( $connection );
 				$score = getUserScore( $connection, $_GET["username"] );
+				
+				echo( '<div id="slider" style="transform: translateX(' );
+				echo( ( $score * 250 ) );
+				echo( 'px)"> </div>' );
 				
 				echo( '<div id="analysis">' );
 				if( $score == -2 ) {
@@ -43,6 +46,8 @@
 				
 				$connection->close();
 			}
+		} else {
+			echo( '<div id="slider"> </div>' );
 		}
 	?>
 	<div id="footer" class="colorGray">

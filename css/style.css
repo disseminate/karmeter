@@ -35,6 +35,7 @@ h1 {
 blockquote {
 	background-color: #EEE;
 	padding: 20px;
+	text-align: left;
 }
 input {
 	background-color: #FFF;
@@ -86,9 +87,8 @@ input:focus {
     margin-right: auto;
     margin-left: auto;
 	
-	width: 40%;
+	width: 500px;
 	height: 40px;
-	min-width: 300px;
 	
 	background-color: #FF842F;
 }
@@ -131,6 +131,5 @@ input:focus {
 }
 
 #training {
-	text-align: left;
 	padding: 20px;
 }
