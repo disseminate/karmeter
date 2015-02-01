@@ -41,8 +41,12 @@
 				if( $score == -2 ) {
 					echo( "<b>" . $_GET["username"] . "</b> does not exist!</div>" );
 				} else {
+					$type = "positive";
+					if( $score < 0 ) {
+						$type = "negative";
+					}
 					echo( "<b><a href='http://reddit.com/u/" . $_GET["username"] . "' target='_blank'>" . $_GET["username"] . "</a></b> has a score of <b>" . round( ( $score + 1 ) * 5, 2 ) . "/10</b>.</div>" );
-					echo( "<div id='analysisSub'>This is based on the words used in the comment history of the user.</div>" );
+					echo( "<div id='analysisSub'>This is based on the words used in the comment history of the user.<br />This user makes mostly " . $type . " comments.</div>" );
 				}
 				
 				$connection->close();
@@ -53,7 +57,7 @@
 	?>
 	<div id="footerPad"> </div>
 	<div id="footer" class="colorGray">
-		Created at UofTHacks 2015 with &#9825; by <a href="http://luaforfood.com" target="_blank">Kyle Windsor</a> and <a href="https://github.com/james2allen" target="_blank">James Allen</a>.
+		Created at UofTHacks 2015 with &#9825; by <a href="http://luaforfood.com" target="_blank">Kyle Windsor</a> and <a href="https://github.com/james2allen" target="_blank">James Allen</a>. Open source on <a href="https://github.com/disseminate/karmeter" target="_blank">GitHub</a>.
 	</div>
 </body>
 </html>

@@ -6,4 +6,8 @@ $( document ).ready( function() {
 			$( this ).removeClass( "clearableText" );
 		}
 	} );
+	
+	var w = $( "#slider" ).width(); // Animate the bar
+	$( "#slider" ).width( 0 );
+	$( "#slider" ).animate( { width: w + 'px' }, 1000 );
 } );
