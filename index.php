@@ -25,7 +25,7 @@
 	<div id="bar"> </div>
 	<?php
 		if( isset( $_GET["username"] ) ) {
-			$connection = new mysqli( "localhost", "root", "", "karmeter" ); // Connect to SQL
+			$connection = new mysqli( MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB ); // Connect to SQL
 			if( $connection->connect_errno ) { // If we couldn't connect, throw an error
 				echo( "Failed to connect to MySQL: (" . $connection->connect_errno . ") " . $connection->connect_error );
 			} else {
@@ -41,7 +41,7 @@
 					echo( "<b>" . $_GET["username"] . "</b> does not exist!</div>" );
 				} else {
 					echo( "<b>" . $_GET["username"] . "</b> has a score of <b>" . round( $score * 5, 3 ) . "</b>.</div>" );
-					echo( "<div id='analysisSub'>A score of -5 is the worst and a score of 5 is the best.</div>" );
+					echo( "<div id='analysisSub'>A score of -5 is the worst and a score of 5 is the best.<br />This is based on the words used in the comment history of the user.</div>" );
 				}
 				
 				$connection->close();
