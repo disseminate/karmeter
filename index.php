@@ -52,7 +52,7 @@
 				$connection->close();
 			}
 		} else {
-			echo( '<div id="slider"> </div></div>' );
+			echo( '</div>' );
 		}
 	?>
 	<div id="footerPad"> </div>

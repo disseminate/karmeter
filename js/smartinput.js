@@ -7,7 +7,9 @@ $( document ).ready( function() {
 		}
 	} );
 	
-	var w = $( "#slider" ).width() / $( "#slider" ).parent().width(); // Animate the bar
-	$( "#slider" ).width( 0 );
-	$( "#slider" ).animate( { width: ( w * 100 ) + '%' }, 1000 );
+	if( $( "#slider" ).length > 0 ) {
+		var w = $( "#slider" ).width() / $( "#slider" ).parent().width(); // Animate the bar
+		$( "#slider" ).width( 0 );
+		$( "#slider" ).animate( { width: ( w * 100 ) + '%' }, 1000 );
+	}
 } );
