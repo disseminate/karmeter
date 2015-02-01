@@ -94,8 +94,7 @@ a:hover, a:focus
 }
 
 #bar {
-	margin: 20px;
-	margin-top: 0px;
+	margin: 0px;
 	
 	display: inline-block;
 	
@@ -105,9 +104,9 @@ a:hover, a:focus
     margin-left: auto;
 	
 	width: 80%;
-	height: 100px;
+	height: 60px;
 	
-	border-radius: 32px;
+	border-radius: 30px;
 	
 	background-color:#FF842F;
 }
@@ -116,9 +115,9 @@ a:hover, a:focus
 	margin: 10px;
 	display: block;
 	
-	height: 80px;
+	height: 40px;
 	
-	border-radius: 32px;
+	border-radius: 20px;
 	
 	background-color: #FFF;
 }
